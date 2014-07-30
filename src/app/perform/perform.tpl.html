@@ -1,0 +1,27 @@
+<header class="sp_fixedheader" ng-include="getHeader()"></header>
+<div class="sp_fixbody">
+    <div class="sp_fixedcontainer_performer">
+		<div class="performer_page"><!-- page-->
+			<div id="mainframe" class="mainframe">
+				<div class="modules">
+					<sp-asset-control ng-repeat="asset in palette.assets" ng-controller="AssetCtrl" asset="asset"></sp-asset-control>
+				</div>
+			</div><!-- // mainframe -->
+		
+			<!-- Inactive modal -->
+			<!--<div modal="paletteInactive" close="close()">-->
+				<!--<div class="modal-header">-->
+					<!--<h4>Ajdå!</h4>-->
+				<!--</div>-->
+				<!--<div class="modal-body">-->
+					<!--<p>Ingen palett är igång i Makaren...</p>-->
+				<!--</div>-->
+				<!--<div class="modal-footer">-->
+					<!--<button class="btn btn-warning cancel" ng-click="close()">Cancel</button>-->
+				<!--</div>-->
+			<!--</div>-->
+
+		</div><!-- // performer_page -->
+	</div><!-- // sp_fixedcontainer -->
+</div><!-- // sp_fixbody -->
+		

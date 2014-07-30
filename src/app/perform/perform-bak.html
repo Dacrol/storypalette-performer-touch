@@ -1,0 +1,33 @@
+<div class="page"><!-- page-->
+  <div class="topframe">
+    <div class="header"><h2>{{palette.name}}</h2></div>
+    <!--<div class="navigation"><a href="#1">1</a><a href="#2">2</a></div>-->
+  </div>
+
+  <div ng-show="!isReady">
+    <br />
+    <h1>Run a palette at the player computer!</h1>
+  </div>
+
+  <div id="mainframe" ng-show="isReady" class="mainframe">
+    <div class="modules"><!-- modules -->
+
+        <div id="control" ng-repeat="asset in palette.assets" ng-switch="asset.params.control">
+            <!-- Buttons -->
+            <div id="control" class="control {{asset.type}}_control" ng-switch-when="button">
+                <a href="" ng-model="controlValue" ng-mousedown="sendControlData($index, asset, 0)" ng-mouseup="sendControlData($index, asset, 100)">
+                    <b>{{asset.type}}</b><i>{{asset.params.label || asset.name | uppercase}}</i>
+                </a>
+            </div>
+
+            <!-- Sliders -->
+            <div class="control {{asset.type}}_control" ng-switch-when="slider">
+                <input id="slider" class="slider" type="range" ng-model="controlValue"
+                       ng-change="sendControlData($index, asset, controlValue)"
+                       te-touchstart="touchStart()">
+                <b>{{asset.params.label || asset.name | uppercase}}</b>
+            </div>
+      </div>
+    </div><!-- // modules -->
+  </div><!-- // mainframe -->
+</div><!-- // page -->

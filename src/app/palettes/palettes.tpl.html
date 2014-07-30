@@ -1,0 +1,16 @@
+<header class="sp_fixedheader" ng-include="getHeader()"></header>
+
+<div class="sp_fixbody">
+  <div class="sp_fixedcontainer">
+		<div class="container">
+			<div class="row">
+				<div class="span5">
+          <h2>Välj en palett</h2>
+					<p ng-repeat="palette in palettes">
+            <a class="btn btn-large sp_fullwidth sp_btn_lefty" ng-href="palettes/{{palette._id}}">{{palette.name}}</a>
+          </p>
+				</div>
+			</div>
+		</div><!-- // container -->
+  </div> <!-- // sp_fixedcontainer -->
+</div> <!-- // sp_fixbody -->

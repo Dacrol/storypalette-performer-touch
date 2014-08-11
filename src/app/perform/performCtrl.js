@@ -1,12 +1,14 @@
 angular.module('sp.performer.perform.performCtrl', []) 
 
 // Controller for the performance interface
-.controller('PerformCtrl', function($scope, security, $stateParams, socket, performState) {
+.controller('PerformCtrl', function($scope, $stateParams, socket, performState) {
+
   $scope.palette = undefined;
   $scope.paletteUpdate = false;
 
   // Request a specific palette from the Editor or Media Player
   var requestedPaletteId = $stateParams['paletteId'];
+  console.log('PerformCtrl', requestedPaletteId);
   socket.emit('requestPalette', requestedPaletteId);
 
   // We received a palette from Media Player.

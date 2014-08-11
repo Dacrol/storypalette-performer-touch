@@ -1,19 +1,24 @@
 angular.module('sp.performer.palettes', [
   'sp.performer.common.palettes',
-  'ui.router',
 
-  'security',
-  'uiSocket'
+  'uiSocket',
+  'uiAuth',
+
+  'ui.router'
 ])
 
-.config(function($stateProvider, socketProvider, securityAuthorizationProvider) {
+.config(function($stateProvider, socketProvider, authProvider) {
+
+
+
+
   // Select palette or create new
   $stateProvider.state('palettes', {
     url: '/palettes', 
     templateUrl: 'palettes/palettes.tpl.html',
     controller: 'PalettesCtrl',
     resolve: {
-      user: securityAuthorizationProvider.requireAuthenticatedUser,
+      user: authProvider.requireUser,
       socketInfo: function(user, socket) {
         return socketProvider.requireAuthenticatedConnection(socket, user);
       },

@@ -17,7 +17,7 @@ angular.module('sp.performer.perform.performState', [
     // Which RGB does this asset affect
     var colours = Object.keys(asset.colour);        // returns ['red','green','blue']
     for (var i = 0; i < colours.length; i++) {
-        value.colour[colours[i]] = asset.colour[colours[i]] * value.raw;
+      value.colour[colours[i]] = asset.colour[colours[i]] * value.raw;
     }
     value.groups = lightGroups;
     return true;
@@ -30,9 +30,9 @@ angular.module('sp.performer.perform.performState', [
       var behaviour = asset.behaviour || config.sound.defaultButtonBehaviour;
 
       if (control === 'slider') {
-          value.volume = value.raw * (asset.maxVolume || 1);
-          value.volume = value.volume < config.sound.silenceThreshold ? 0 : value.volume;
-          return true;
+        value.volume = value.raw * (asset.maxVolume || 1);
+        value.volume = value.volume < config.sound.silenceThreshold ? 0 : value.volume;
+        return true;
       } else if (control === 'button') {
           if (value.raw === config.button.downValue) {
               // Button pressed

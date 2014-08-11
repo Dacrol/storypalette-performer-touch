@@ -64,7 +64,6 @@ module.exports = function (grunt) {
             cwd: '.',
             expand: true,
             rename: function(dest, src) {
-              console.log('dest', dest, 'src', src);
               return dest + src;
             }
           }
@@ -310,7 +309,7 @@ module.exports = function (grunt) {
       // Per default, Live Reload should work for all tasks.
       // It runs by default on port 35729.
       options: {
-        livereload: true
+        livereload: 35731,
       },
 
       // When the Gruntfile changes, we just want to lint it.

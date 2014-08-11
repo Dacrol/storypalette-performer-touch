@@ -1,18 +1,20 @@
 angular.module('sp.performer.start', [
-  'ui.router',
-  'security'
+  'uiAuth', 
+  'uiSocket',
+
+  'ui.router'
 ])
 
-.config(function($stateProvider, securityAuthorizationProvider) {
+.config(function($stateProvider, socketProvider, authProvider) {
   $stateProvider.state('start', {
-    url: '/', 
+    url: '/start', 
     templateUrl: 'start/start.tpl.html',
     controller: 'StartCtrl',
     resolve: {
-      knas: function() {
-        console.log('knase');
-      },
-      user: securityAuthorizationProvider.requireAuthenticatedUser
+      user: authProvider.requireUser,
+      socketInfo: function(user, socket) {
+        return socketProvider.requireAuthenticatedConnection(socket, user);
+      }
     }
   });
 })

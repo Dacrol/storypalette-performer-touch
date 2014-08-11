@@ -53,11 +53,12 @@ module.exports = {
     js: [
       // Uses shared_dir
       ['src/common/uiSocket/**/*.js', '!src/common/uiSocket/**/*.spec.js'],
-      ['src/common/security/**/*.js', '!src/common/security/**/*.spec.js']
+      ['src/common/uiAuth/**/*.js', '!src/common/uiAuth/**/*.spec.js']
     ],
     tpl: [
       // Full path from '.'
-      '../storypalette-editor/src/common/security/**/*.tpl.html'
+      '../storypalette-editor/src/common/security/**/*.tpl.html',
+      '../storypalette-editor/src/common/uiAuth/**/*.tpl.html'
       //'src/common/security/login/form.tpl.html'
     ]
 

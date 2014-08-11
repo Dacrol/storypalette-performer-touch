@@ -22,7 +22,7 @@ module.exports = function(karma) {
     reporters: ['dots'],
 
     // Web server port.
-    port: 9018,
+    port: 9021,
 
     // Test runner port.
     runnerPort: 9100,

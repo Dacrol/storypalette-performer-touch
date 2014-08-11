@@ -1,6 +1,4 @@
 angular.module('sp.performer', [
-  'ui.router',
-
   'templates-app',
   'templates-common',
   'templates-shared',
@@ -9,12 +7,21 @@ angular.module('sp.performer', [
   'sp.performer.palettes',
   'sp.performer.perform',
 
+  'sp.performer.common.config', 
+
+  'uiAuth', 
+  'uiSocket', 
+
+  'ui.router',
   'ui.bootstrap'
 ])
 
-.config(function($locationProvider) {
+.config(function($locationProvider, authConfigProvider, config) {
   // Route configuration
   $locationProvider.html5Mode(true);  // no hash-urls
+
+  authConfigProvider.setTokenKey('spPerformerToken'); 
+  authConfigProvider.setApiBase(config.apiBase); 
 
   // TODO: Wrong URL
 })

@@ -6,16 +6,19 @@ angular.module('sp.performer.perform', [
   'sp.performer.perform.spAssetControl',
 
   'uiSocket',
-  'security'
+  'uiAuth',
+
+  'ui.router'
 ])
 
-.config(function($stateProvider, socketProvider, securityAuthorizationProvider) {
+.config(function($stateProvider, socketProvider, authProvider) {
+
   $stateProvider.state('perform', {
     url: '/palettes/:paletteId', 
     templateUrl: 'perform/perform.tpl.html',
     controller: 'PerformCtrl',
     resolve: {
-      user: securityAuthorizationProvider.requireAuthenticatedUser,
+      user: authProvider.requireUser,
       socketInfo: function(user, socket) {
         return socketProvider.requireAuthenticatedConnection(socket, user);
       }

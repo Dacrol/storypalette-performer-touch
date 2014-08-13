@@ -8,7 +8,7 @@ angular.module('sp.performer.perform.performCtrl', [])
 
   // Request a specific palette from the Editor or Media Player
   var requestedPaletteId = $stateParams['paletteId'];
-  console.log('PerformCtrl', requestedPaletteId);
+  console.log('PerformCtrl: palette', requestedPaletteId);
   socket.emit('requestPalette', requestedPaletteId);
 
   // We received a palette from Media Player.
@@ -17,7 +17,7 @@ angular.module('sp.performer.perform.performCtrl', [])
     if (palette._id === requestedPaletteId) {
       $scope.palette = palette;
 
-      var resetData = PerformState.resetLights();
+      var resetData = performState.resetLights();
       socket.emit('valueUpdate', resetData);
     }
   });

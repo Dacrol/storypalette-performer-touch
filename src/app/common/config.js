@@ -16,7 +16,7 @@ angular.module('sp.performer.common.config', [])
     downValue: 666,
     upValue: -666
   },
-  // TODO: Make apiBase depend on environment!
-  apiBase: 'http://api.storypalette.dev:8888/v1/'
+  environment: window.env.environment || 'local',
+  apiBase: window.env.apiBase
 })
 ;

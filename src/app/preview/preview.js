@@ -1,23 +1,19 @@
 angular.module('sp.performer.preview', [
   'ui.router',
-  'security'
 ])
 
-.config(function($stateProvider, securityAuthorizationProvider) {
-  $stateProvider.state('preview', {
+.config(function($stateProvider) {
+  $stateProvider.state('user.preview', {
     url: '/preview', 
 
     // NB: Reuse perform template.
     templateUrl: 'perform/perform.tpl.html',
-    controller: 'PreviewCtrl',
-    resolve: {
-      info: socketProvider.requireAuthenticatedUserAndSocketConnection
-    }
+    controller: 'PreviewCtrl'
   });
 })
 
 // Controller for performing a palette in Preview mode
-.controller('PreviewCtrl', function($scope, $location, Palettes, socket) {
+.controller('PreviewCtrl', function($scope, $location, palettes, socket) {
 
     $scope.palette = undefined;
     $scope.paletteUpdate = false;

@@ -1,27 +1,15 @@
 angular.module('sp.performer.palettes', [
   'sp.performer.common.palettes',
-
-  'uiSocket',
-  'uiAuth',
-
   'ui.router'
 ])
 
-.config(function($stateProvider, socketProvider, authProvider) {
-
-
-
-
+.config(function($stateProvider) {
   // Select palette or create new
-  $stateProvider.state('palettes', {
+  $stateProvider.state('user.palettes', {
     url: '/palettes', 
     templateUrl: 'palettes/palettes.tpl.html',
     controller: 'PalettesCtrl',
     resolve: {
-      user: authProvider.requireUser,
-      socketInfo: function(user, socket) {
-        return socketProvider.requireAuthenticatedConnection(socket, user);
-      },
       allPalettes: function(palettes) {
         return palettes.all();
       }
@@ -30,6 +18,7 @@ angular.module('sp.performer.palettes', [
 })
 
 .controller('PalettesCtrl', function($scope, allPalettes) {
+  console.log('PalettesCtrl', allPalettes);
   $scope.palettes = allPalettes;
 })
 ;

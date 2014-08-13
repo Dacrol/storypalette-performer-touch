@@ -1,8 +1,9 @@
 angular.module('sp.performer.start', [
   'uiAuth', 
   'uiSocket',
-
+  'uiUtils',
   'ui.router'
+
 ])
 
 .config(function($stateProvider, socketProvider, authProvider) {
@@ -12,8 +13,11 @@ angular.module('sp.performer.start', [
     controller: 'StartCtrl',
     resolve: {
       user: authProvider.requireUser,
-      socketInfo: function(user, socket) {
-        return socketProvider.requireAuthenticatedConnection(socket, user);
+      socketInfo: function(user, socket, utils, auth) {
+        var ns = utils.getSocketNamespace(user);
+        var room = utils.getSocketRoom(user);
+        var token = auth.getToken(); 
+        return socketProvider.requireAuthenticatedConnection(socket, ns, room, token);
       }
     }
   });
@@ -23,7 +27,7 @@ angular.module('sp.performer.start', [
 // 'create': performer is slave to editor or
 // 'play':  performer is master of editor/player
 .controller('StartCtrl', function($scope, user) {
-  console.log('startCtrl');
+  console.log('startCtrl', user);
   $scope.room = user.organisation.rooms[0].name;
 })
 ;

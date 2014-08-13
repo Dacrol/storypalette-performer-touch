@@ -16,12 +16,15 @@ angular.module('sp.performer', [
   'ui.bootstrap'
 ])
 
-.config(function($locationProvider, authConfigProvider, config) {
+.config(function($locationProvider, $urlRouterProvider, authConfigProvider, config) {
   // Route configuration
   $locationProvider.html5Mode(true);  // no hash-urls
 
   authConfigProvider.setTokenKey('spPerformerToken'); 
   authConfigProvider.setApiBase(config.apiBase); 
+
+  // Redirect to palette list.
+  $urlRouterProvider.when('/', '/start');
 
   // TODO: Wrong URL
 })

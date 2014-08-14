@@ -12,7 +12,10 @@ angular.module('sp.performer.perform', [
   $stateProvider.state('user.perform', {
     url: '/palettes/:paletteId', 
     templateUrl: 'perform/perform.tpl.html',
-    controller: 'PerformCtrl'
+    controller: 'PerformCtrl',
+    onExit: function(user, socket) {
+      console.log('exit perform'); 
+    }
   });
 })
 ;

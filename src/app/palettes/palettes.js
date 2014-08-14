@@ -18,7 +18,6 @@ angular.module('sp.performer.palettes', [
 })
 
 .controller('PalettesCtrl', function($scope, allPalettes) {
-  console.log('PalettesCtrl', allPalettes);
   $scope.palettes = allPalettes;
 })
 ;

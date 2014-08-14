@@ -25,118 +25,117 @@ angular.module('sp.performer.perform.performState', [
 
   // Sound
   var updateSoundValue = function (asset) {
-      var value = asset.value;
-      var control = asset.control || 'slider';
-      var behaviour = asset.behaviour || config.sound.defaultButtonBehaviour;
+    var value = asset.value;
+    var control = asset.control || 'slider';
+    var behaviour = asset.behaviour || config.sound.defaultButtonBehaviour;
 
-      if (control === 'slider') {
-        value.volume = value.raw * (asset.maxVolume || 1);
-        value.volume = value.volume < config.sound.silenceThreshold ? 0 : value.volume;
-        return true;
-      } else if (control === 'button') {
-          if (value.raw === config.button.downValue) {
-              // Button pressed
-              switch (behaviour) {
-                  case 'gate':
-                      // Start playing
-                      value.state = 'playing';
-                      return true;
-                  case 'toggle':
-                      value.state = (value.state === 'playing') ? 'stopped' : 'playing';
-                      return true;
-                  default:
-                      console.log('Unknown behaviour type: ', behaviour);
-                      return false;
-              }
-          }  else if (value.raw === config.button.upValue) {
-              // Button released
-              switch (behaviour) {
-                  case 'gate':
-                      value.state = 'stopped';
-                      return true;
-                  case 'toggle':
-                      return false;
-              }
-          }
-      } else {
-          console.log('Unknown control type');
-          return false;
+    if (control === 'slider') {
+      value.volume = value.raw * (asset.maxVolume || 1);
+      value.volume = value.volume < config.sound.silenceThreshold ? 0 : value.volume;
+      return true;
+    } else if (control === 'button') {
+      if (value.raw === config.button.downValue) {
+        // Button pressed
+        switch (behaviour) {
+          case 'gate':
+            value.state = 'playing';
+            return true;
+          case 'toggle':
+            value.state = (value.state === 'playing') ? 'stopped' : 'playing';
+            return true;
+          default:
+            console.log('Unknown behaviour type: ', behaviour);
+            return false;
+        }
+      } else if (value.raw === config.button.upValue) {
+          // Button released
+          switch (behaviour) {
+            case 'gate':
+              value.state = 'stopped';
+              return true;
+            case 'toggle':
+              return false;
+        }
       }
+    } else {
+      console.log('Unknown control type');
+      return false;
+    }
   };
 
   // Image
   var updateImageValue = function (asset) {
-      var value = asset.value;
-      var behaviour = asset.behaviour || config.image.defaultButtonBehaviour;
+    var value = asset.value;
+    var behaviour = asset.behaviour || config.image.defaultButtonBehaviour;
 
-      if (value.raw === config.button.downValue) {
-          // Button pressed
-          switch (behaviour) {
-              case 'gate':
-                  value.opacity = 1;
-                  return true;
-              case 'toggle':
-                  if (asset.id !== prevImageAssetId) {
-                      // New image clicked - always show
-                      value.opacity = 1;
-                  } else {
-                      // Same image - toggle visibility
-                      value.opacity = (value.opacity === 1) ? 0 : 1;
-                  }
-                  prevImageAssetId = asset.id;
-                  return true;
-              default:
-                  console.log('Unknown behaviour type: ', behaviour);
-                  return false;
+    if (value.raw === config.button.downValue) {
+      // Button pressed
+      switch (behaviour) {
+        case 'gate':
+          value.opacity = 1;
+          return true;
+        case 'toggle':
+          if (asset.id !== prevImageAssetId) {
+              // New image clicked - always show
+              value.opacity = 1;
+          } else {
+            // Same image - toggle visibility
+            value.opacity = (value.opacity === 1) ? 0 : 1;
           }
-      } else if (value.raw === config.button.upValue) {
-          // Button released
-          switch (behaviour) {
-              case 'gate':
-                  value.opacity = 0;
-                  return true;
-              case 'toggle':
-                  return false;  // ignore mouseup
-          }
-      } else {
-          console.log('Sliders to be implemented...');
+          prevImageAssetId = asset.id;
+          return true;
+        default:
+          console.log('Unknown behaviour type: ', behaviour);
           return false;
       }
+    } else if (value.raw === config.button.upValue) {
+      // Button released
+      switch (behaviour) {
+        case 'gate':
+          value.opacity = 0;
+          return true;
+        case 'toggle':
+          return false;  // ignore mouseup
+      }
+    } else {
+      console.log('Sliders to be implemented...');
+      return false;
+    }
   };
 
   // Public API
   var service = {
-      init: function(currPalette) {
-          palette = currPalette;
+    init: function(currPalette) {
+      palette = currPalette;
 
-          // Store sound assets for easy lookup
-          for (var i = 0; i < palette.assets.length; i++) {
-              if (palette.assets[i].type === 'sound') {
-                  soundAssets[palette.assets[i].id] = palette.assets[i];
-              }
-          }
-      },
-
-      // Return data for blacking out all the lights
-      resetLights: function() {
-          var pseudoAsset = {colour: {red:1, blue:1, green:1}, value:{raw:0}};
-          updateLightValue(pseudoAsset);
-          return {paletteId: null, assetId: null, value: pseudoAsset.value};
-      },
-
-      // Returns true if an event should be sent, false if not
-      updateValue: function(asset) {
-          switch (asset.type) {
-              case 'light':
-                  return updateLightValue(asset);
-              case 'sound':
-                  return updateSoundValue(asset);
-              case 'image':
-                  return updateImageValue(asset);
-              default:
-                  throw new Error('Unknown asset type');
-          }
+      // Store sound assets for easy lookup
+      for (var i = 0; i < palette.assets.length; i++) {
+        if (palette.assets[i].type === 'sound') {
+          soundAssets[palette.assets[i].id] = palette.assets[i];
+        }
       }
+    },
+
+    // Return data for blacking out all the lights
+    resetLights: function() {
+      var pseudoAsset = {colour: {red:1, blue:1, green:1}, value:{raw:0}};
+      updateLightValue(pseudoAsset);
+      return {paletteId: null, assetId: null, value: pseudoAsset.value};
+    },
+
+    // Returns true if an event should be sent, false if not
+    updateValue: function(asset) {
+      switch (asset.type) {
+        case 'light':
+          return updateLightValue(asset);
+        case 'sound':
+          return updateSoundValue(asset);
+        case 'image':
+          return updateImageValue(asset);
+        default:
+          throw new Error('Unknown asset type');
+      }
+    }
   };
 
   return service;

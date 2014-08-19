@@ -11,7 +11,7 @@ angular.module('sp.performer', [
 
   'uiAuth', 
   'uiSocket', 
-  'uiUtils',
+  'spUtils',
 
   'ui.router',
   'ui.bootstrap'
@@ -30,13 +30,15 @@ angular.module('sp.performer', [
     abstract: true,
     template: '<ui-view/>',
     resolve: {
-      user: authProvider.requireUser,
-      socketInfo: function(user, socket, utils, auth) {
-        var ns = utils.getSocketNamespace(user);
-        var room = utils.getSocketRoom(user);
-        var token = auth.getToken(); 
-        return socketProvider.requireAuthenticatedConnection(socket, ns, room, token);
-      }
+      user: authProvider.requireUser
+      //socketInfo: function(user, socket, utils, auth) {
+        //var ns = utils.getSocketNamespace(user);
+        //var token = auth.getToken(); 
+        //utils.getSocketRoom(user).then(function(room) {
+          //console.log('got room', room);
+          //return socketProvider.requireAuthenticatedConnection(socket, ns, room, token);
+        //});
+      //}
     }
   });
 

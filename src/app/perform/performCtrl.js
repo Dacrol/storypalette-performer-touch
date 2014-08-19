@@ -11,6 +11,7 @@ angular.module('sp.performer.perform.performCtrl', [])
 
   // We received a palette from Media Player.
   socket.on('onActivePalette', function(palette) {
+    console.log('got palette', palette);
     // Perform mode - only accept the requested palette
     if (palette._id === requestedPaletteId) {
       $scope.palette = palette;

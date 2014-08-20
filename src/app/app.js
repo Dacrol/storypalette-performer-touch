@@ -3,7 +3,7 @@ angular.module('sp.performer', [
   'templates-common',
   'templates-shared',
 
-  'sp.performer.start', 
+  'sp.performer.rooms', 
   'sp.performer.palettes',
   'sp.performer.perform',
 
@@ -31,21 +31,28 @@ angular.module('sp.performer', [
     template: '<ui-view/>',
     resolve: {
       user: authProvider.requireUser
-      //socketInfo: function(user, socket, utils, auth) {
-        //var ns = utils.getSocketNamespace(user);
-        //var token = auth.getToken(); 
-        //utils.getSocketRoom(user).then(function(room) {
-          //console.log('got room', room);
-          //return socketProvider.requireAuthenticatedConnection(socket, ns, room, token);
-        //});
-      //}
     }
   });
 
   // Redirect to palette list.
-  $urlRouterProvider.when('/', '/start');
+  $urlRouterProvider.when('/', '/rooms');
+
 
   // TODO: Wrong URL
+})
+
+.run(function($rootScope, $state) {
+  // Listen for resolve errors.
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+    console.log('stateChangeError', error);  
+    switch (toState.name) {
+      case 'user.perform': 
+        // Tried to access performer without selecting a room.
+        // Redirect to room select.
+        $state.go('user.rooms');
+    }
+  });
+
 })
 
 .controller('AppCtrl', function($scope, config, socket, utils, auth) {

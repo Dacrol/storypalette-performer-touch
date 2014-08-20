@@ -5,7 +5,8 @@
 			<div class="row">
 				<div class="span5">
 					<br /><br /><br /><h1>Storypalette Performer</h1>
-					<br /><br /><p><a class="btn btn-large btn-primary sp_fullwidth" href="/palettes">Spela palett i {{room}}</a></p><br />
+          <br /><br />
+          <p ng-repeat="room in rooms"><a class="btn btn-large btn-primary sp_fullwidth" ng-click="setRoom(room)">Spela palett i {{room.name}}</a></p><br />
 				</div>
 				<div class="span6">
 				</div>

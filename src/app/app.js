@@ -56,8 +56,6 @@ angular.module('sp.performer', [
 })
 
 .controller('AppCtrl', function($scope, config, socket, utils, auth) {
-  console.log('AppCtrl');
-
   // Used to point /image and /sound to the correct api url.
   $scope.apiBase = config.apiBase;
 

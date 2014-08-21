@@ -10,14 +10,13 @@ angular.module('sp.performer', [
   'sp.performer.common.config', 
 
   'uiAuth', 
-  'uiSocket', 
   'spUtils',
 
   'ui.router',
   'ui.bootstrap'
 ])
 
-.config(function($locationProvider, $urlRouterProvider, authConfigProvider, config, authProvider, $stateProvider, socketProvider) {
+.config(function($locationProvider, $urlRouterProvider, authConfigProvider, config, authProvider, $stateProvider) {
   // Route configuration
   $locationProvider.html5Mode(true);  // no hash-urls
 
@@ -55,7 +54,7 @@ angular.module('sp.performer', [
 
 })
 
-.controller('AppCtrl', function($scope, config, socket, utils, auth) {
+.controller('AppCtrl', function($scope, config, utils, auth) {
   // Used to point /image and /sound to the correct api url.
   $scope.apiBase = config.apiBase;
 

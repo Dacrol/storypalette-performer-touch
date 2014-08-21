@@ -5,8 +5,6 @@ angular.module('sp.performer.common.palettes', [
 .factory('palettes', function($http, config) {
   var apiBase = config.apiBase + 'palettes/'; // http://api.storypalette.net/palettes
 
-  console.log('config', config);
-
   // Public API
   return {
     all: function() {

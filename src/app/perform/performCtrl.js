@@ -1,8 +1,9 @@
 angular.module('sp.performer.perform.performCtrl', []) 
 
-.controller('PerformCtrl', function($scope, $location, $state, dialog, $urlRouter, $stateParams, socket, performState) {
+.controller('PerformCtrl', function($scope, $state, dialog, $stateParams, socket, performState) {
   $scope.palette = undefined;
   $scope.paletteUpdate = false;
+  $scope.socket = socket; // Used by AssetCtrl
 
   // User needs to confirm before leaving this state.
   var stateChangeOff = $scope.$on('$stateChangeStart', stateChange);
@@ -15,6 +16,7 @@ angular.module('sp.performer.perform.performCtrl', [])
     })
     .then(function ok() {
       stateChangeOff();
+      disconnect();
       $state.go(toState.name);
     });
 
@@ -22,6 +24,17 @@ angular.module('sp.performer.perform.performCtrl', [])
     event.preventDefault(); 
     return;
   }
+
+  // Stop playing palette.
+  var disconnect = function() {
+    console.log('disconnect from palette', $scope.palette.name); 
+    socket.disconnect();
+    //socket.removeAllListeners();
+  };
+
+  $scope.$on('$destroy', function() {
+    console.log('PerformCtrl scope destroyed'); 
+  });
 
   // Request the palette from Player
   var requestedPaletteId = $stateParams['paletteId'];

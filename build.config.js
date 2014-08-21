@@ -32,10 +32,8 @@ module.exports = {
       'vendor/angular-mocks/angular-mocks.js',
       'vendor/angular-animate/angular-animate.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
+      'vendor/angular-socket-io/socket.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-      
-      // TODO: We should have a better system for shared components.
-      //'../storypalette-editor/test.js'
     ],
     css: [],
   },
@@ -52,7 +50,7 @@ module.exports = {
   shared_files: {
     js: [
       // Uses shared_dir
-      ['src/common/uiSocket/**/*.js', '!src/common/uiSocket/**/*.spec.js'],
+      ['src/common/spConnection/**/*.js', '!src/common/spConnection/**/*.spec.js'],
       ['src/common/spUtils/**/*.js', '!src/common/spUtils/**/*.spec.js'],
       ['src/common/uiDialog/**/*.js', '!src/common/uiDialog/**/*.spec.js'],
       ['src/common/uiAuth/**/*.js', '!src/common/uiAuth/**/*.spec.js']

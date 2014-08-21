@@ -1,7 +1,7 @@
 angular.module('sp.performer.perform.assetCtrl', []) 
 // RUNTIME: Controller for individual assets in palette
 // implied scope: $scope.$index; $scope.asset
-.controller('AssetCtrl', function($scope, socket, config, performState) {
+.controller('AssetCtrl', function($scope, config, performState) {
 
   /*  // TODO: No local settings for now
   console.log(room, $scope.asset.local);
@@ -16,7 +16,7 @@ angular.module('sp.performer.perform.assetCtrl', [])
       if ($scope.paletteUpdate === false) {
         if (performState.updateValue($scope.asset)) {
           var data = {paletteId: $scope.palette._id, assetId: $scope.$index, value: $scope.asset.value};
-          socket.emit('valueUpdate', data);
+          $scope.socket.emit('valueUpdate', data);
 //        console.log('Value after valueUpdate', $scope.asset.value);
         }
       } else {

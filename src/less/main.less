@@ -29,12 +29,31 @@
 
 // Style ahead!
 body {
-	color: red;
+	color: #333;
   background: #333;
 }
 
-a.sp_storypalette_home {
-	color: red;
+/*.sp_fixedheader i[class^="icon-"] { 
+  background-image: url("img/glyphicons-halflings-white.png");
+}*/
+
+.sp_fixedheader { 
+  background: #333;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+  height: 44px;
+  box-sizing: border-box;
+  display: block;
+  z-index: 999;
+}
+
+.sp_navbar {
+  width: 940px;
+  margin: 0 auto;
+  color: white;
+}
+
+h2 {
+  color: white;
 }
 
 div.sp_navbar a:not(.sp_storypalette_home)
@@ -56,12 +75,12 @@ div.sp_navbar a:focus {
 }
 
 .sp_nav {
-  float:left;
-  line-height:44px;
+  padding-left: 10px;
+  float: left;
 }
 
 .sp_navbar a{
-  cursor: pointer;
+  color:white;
   text-decoration: none;
 }
 
@@ -72,18 +91,17 @@ div.sp_navbar a:focus {
   padding: 6px 10px;
   background-color: rgba(0,0,0,0.7);*/
   color: rgba(0,0,0,0.7);
-  text-shadow: 0 0px 1px rgba(0, 0, 0, 0.25);
+  /*text-shadow: 0 0px 1px rgba(0, 0, 0, 0.25);*/
   line-height:44px;
 }
 
 a.sp_storypalette_home {
   font-family:Pacifico, Georgia, "Times New Roman", Times, serif;
   font-size:20px;
-  color:black;
+  color:white;
   margin-right:20px;
   float:left;
   line-height:38px;
-  /*vertical-align: middle;*/
 }
 
 .sp_navbar a:hover {
@@ -101,24 +119,41 @@ a.logout, a.login {
 
 .sp_login {
   float:right;
-  line-height:44px;
+  /*line-height:44px;*/
 }
 
 .sp_login .sp_user {
   opacity: 0.6;
-  text-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);
+ /* text-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);*/
 }
 
 .modal .modal-header h3 {
   color: black;
 }
 
-.sp_fixedheader i[class^="icon-"] { /* This sets the icons in the black header to the white variant */
-  background-image: url("img/glyphicons-halflings-white.png");
+div.sp_fixbody {
+    position:absolute;
+    top:44px;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow:scroll;
 }
 
-.sp_fixedheader { 
-  background: #333;
+div.sp_fixedcontainer {
+    margin:0 auto;
+    width:940px;
+    height:100%;
+    position:relative;
+    /*margin-bottom: 10px;*/
+    /*background:url(../img/dev/10-60-10_grid.png) -10px 0 repeat;*/
+}
+
+div.sp_fixedcontainer_performer {
+    margin:0 auto;
+    width:960px;
+    height:100%;
+    position:relative;
 }
 
 div.performer_page {
@@ -348,4 +383,13 @@ font-size:16px;
 line-height:20px;
 padding:0;
 height:20px;
+}
+
+.sp_btn_lefty {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

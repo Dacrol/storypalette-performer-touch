@@ -53,12 +53,14 @@ module.exports = {
       ['src/common/spConnection/**/*.js', '!src/common/spConnection/**/*.spec.js'],
       ['src/common/spUtils/**/*.js', '!src/common/spUtils/**/*.spec.js'],
       ['src/common/uiDialog/**/*.js', '!src/common/uiDialog/**/*.spec.js'],
+      ['src/common/uiProfile/**/*.js', '!src/common/uiProfile/**/*.spec.js'],
       ['src/common/uiAuth/**/*.js', '!src/common/uiAuth/**/*.spec.js']
     ],
     tpl: [
       // Full path from '.'
       '../storypalette-editor/src/common/security/**/*.tpl.html',
       '../storypalette-editor/src/common/uiAuth/**/*.tpl.html',
+      '../storypalette-editor/src/common/uiProfile/**/*.tpl.html',
       '../storypalette-editor/src/common/uiDialog/**/*.tpl.html'
       //'src/common/security/login/form.tpl.html'
     ]

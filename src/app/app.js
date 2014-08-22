@@ -11,6 +11,7 @@ angular.module('sp.performer', [
 
   'uiAuth', 
   'spUtils',
+  'uiProfile',
 
   'ui.router',
   'ui.bootstrap'

@@ -1,6 +1,6 @@
-describe('sp.performer.perform.performState', function() {
+describe('sp.performer.common.performState', function() {
 
-  beforeEach(module('sp.performer.perform.performState'));
+  beforeEach(module('sp.performer.common.performState'));
   beforeEach(module('sp.performer.common.config'));
 
   describe('performState service', function() {

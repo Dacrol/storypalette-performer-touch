@@ -2,7 +2,7 @@ angular.module('sp.performer.perform', [
   'sp.performer.perform.performCtrl',
   'sp.performer.perform.assetCtrl',
 
-  'sp.performer.perform.performState',
+  'sp.performer.common.performState',
   'sp.performer.perform.spAssetControl',
 
   'spConnection', 
@@ -18,13 +18,13 @@ angular.module('sp.performer.perform', [
     controller: 'PerformCtrl',
     resolve: {
       socket: function($q, user, connection, utils, auth, performState) {
-        if (!performState.roomId) {
+        if (!performState.room) {
           // No room selected - cause redirect via $stateChangeError.
           return $q.reject('user.perform resolve: no room selected');
         }
         var ns = utils.getSocketNamespace(user);
         var token = auth.getToken(); 
-        var room = performState.roomId;
+        var room = performState.room.id;
         return connection.requireRoomConnection(ns, room, token);
       }
     }

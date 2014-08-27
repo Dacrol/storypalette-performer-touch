@@ -22,7 +22,7 @@ angular.module('sp.performer.rooms', [
   $scope.rooms = rooms;
 
   $scope.setRoom = function(room) {
-    performState.roomId = room.id; 
+    performState.room = room; 
     $state.go('user.palettes');
   };
 

@@ -45,22 +45,29 @@ angular.module('sp.performer', [
   // Listen for resolve errors.
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     console.log('stateChangeError', error);  
+    $state.go('user.rooms');
+    /*
     switch (toState.name) {
       case 'user.perform': 
         // Tried to access performer without selecting a room.
         // Redirect to room select.
         $state.go('user.rooms');
     }
+    */
   });
-
 })
 
-.controller('AppCtrl', function($scope, config, utils, auth) {
+.controller('AppCtrl', function($scope, $state, config, utils, auth) {
   // Used to point /image and /sound to the correct api url.
   $scope.apiBase = config.apiBase;
 
+  $scope.$on('auth:userLoggedOut', function(e) {
+    console.log('user logged out appctrl');
+    $state.go('user.rooms');
+  });
+
   $scope.$on('auth:userLoggedIn', function(e, user) {
-    console.log('auth:userLoggedIn', user); 
+    console.log('auth:userLoggedIn', user.username); 
 
     /* User logged in, connect to server...
     var ns = utils.getSocketNamespace(user);

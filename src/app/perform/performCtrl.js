@@ -27,7 +27,7 @@ angular.module('sp.performer.perform.performCtrl', [])
 
   // Stop playing palette.
   var disconnect = function() {
-    console.log('disconnect from palette', $scope.palette.name); 
+    console.log('disconnect from palette');
     socket.disconnect();
     //socket.removeAllListeners();
   };
@@ -42,21 +42,12 @@ angular.module('sp.performer.perform.performCtrl', [])
 
   // We received a palette from Media Player.
   socket.on('onActivePalette', function(palette) {
-    //console.log('got palette', palette);
     // Perform mode - only accept the requested palette
     if (palette._id === requestedPaletteId) {
       $scope.palette = palette;
-
-      var resetData = performState.resetLights();
-      socket.emit('valueUpdate', resetData);
+      //var resetData = performState.resetLights();
+      //socket.emit('valueUpdate', resetData);
     }
-  });
-
-  // Palette was deactivated in Editor or Media Player
-  socket.on('onPaletteDeactivate', function() {
-    // Editor closed palette
-    console.log('deactivate');
-   // $scope.paletteInactive = true;
   });
 })
 ;

@@ -12,7 +12,7 @@ angular.module('sp.performer.common.performState', [
 
   // Light
   var updateLightValue = function(asset, groups) {
-    console.log('asset', asset, 'groups', groups);
+    //console.log('asset', asset, 'groups', groups);
     //var lightGroups = ['A', 'B', 'C'];      // TODO: Hacky - hardcorded light groups!
     var value = asset.value;
     value.colour = {};

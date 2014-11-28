@@ -17,7 +17,13 @@ angular.module('sp.performer.palettes', [
   });
 })
 
-.controller('PalettesCtrl', function($scope, allPalettes) {
+.controller('PalettesCtrl', function($scope, allPalettes, user) {
   $scope.palettes = allPalettes;
+  $scope.user = user;
+  $scope.userFilter = '';
+
+  $scope.filterPalettes = function(filter) {
+    $scope.userFilter = (filter === 'user') ? $scope.user._id : '';
+  };
 })
 ;

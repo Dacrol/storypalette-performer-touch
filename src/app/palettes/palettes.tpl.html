@@ -19,7 +19,7 @@
 	  </p>
 	</div>
 	<div>
-					<p ng-repeat="palette in palettes | filter: { creatorId : userFilter} | filter: query"">
+					<p ng-repeat="palette in palettes | orderBy: 'name' | filter: { creatorId : userFilter} | filter: query"">
             <a class="btn btn-default btn-lg btn-block sp_fullwidth sp_btn_lefty" ng-href="/palettes/{{palette._id}}">{{palette.name}}</a>
           </p>
 	</div>

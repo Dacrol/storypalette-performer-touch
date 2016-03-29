@@ -41,7 +41,12 @@ angular.module('sp.performer', [
   // TODO: Wrong URL
 })
 
-.run(function($rootScope, $state) {
+.run(function($rootScope, $state, $window) {
+    
+  $rootScope.$on('auth:userLoggedOut', function(user){
+     $window.location.reload();
+  });
+  
   // Listen for resolve errors.
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     console.log('stateChangeError', error);  

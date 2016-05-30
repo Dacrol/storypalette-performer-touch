@@ -1,9 +1,20 @@
-angular.module('sp.performer.perform', [
-  'sp.performer.perform.performCtrl',
-  'sp.performer.perform.assetCtrl',
 
-  'sp.performer.common.performState',
-  'sp.performer.perform.spAssetControl',
+import template from './perform.tpl.html';
+import performCtrl from './performCtrl.js';
+import assetCtrl from './assetCtrl.js';
+import performState from '../common/performState.js';
+import spAssetControl from './spAssetControl.js';
+import spConnection from '../common/spConnection/connection.js';
+import uiDialog from '../common/uiDialog/uiDialog.js'
+import uirouter from 'angular-ui-router';
+import '../header.tpl.html';
+
+angular.module('perform', [
+  'performCtrl',
+  'assetCtrl',
+
+  'performState',
+  'spAssetControl',
 
   'spConnection', 
   'uiDialog',
@@ -14,7 +25,7 @@ angular.module('sp.performer.perform', [
 .config(function($stateProvider) {
   $stateProvider.state('user.perform', {
     url: '/palettes/:paletteId', 
-    templateUrl: 'perform/perform.tpl.html',
+    templateUrl: template,
     controller: 'PerformCtrl',
     resolve: {
       socket: function($q, user, connection, utils, auth, performState) {

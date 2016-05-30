@@ -1,5 +1,11 @@
-angular.module('sp.performer.palettes', [
-  'sp.performer.common.palettes',
+
+import template from './palettes.tpl.html';
+import uirouter from 'angular-ui-router';
+import performerCommonPalettes from '../common/palettes.js';
+import '../header.tpl.html';
+
+angular.module('palettes', [
+  'performerCommonPalettes',
   'ui.router'
 ])
 
@@ -7,7 +13,7 @@ angular.module('sp.performer.palettes', [
   // Select palette or create new
   $stateProvider.state('user.palettes', {
     url: '/palettes', 
-    templateUrl: 'palettes/palettes.tpl.html',
+    templateUrl: template,
     controller: 'PalettesCtrl',
     resolve: {
       allPalettes: function(palettes) {

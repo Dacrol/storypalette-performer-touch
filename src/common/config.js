@@ -1,4 +1,4 @@
-angular.module('sp.performer.common.config', [])
+angular.module('performerConfig', [])
 
 .constant('config', {
   version: {
@@ -16,6 +16,7 @@ angular.module('sp.performer.common.config', [])
     downValue: 666,
     upValue: -666
   },
+  
   environment: window.env.environment || 'local',
   apiBase: window.env.apiBase
 })

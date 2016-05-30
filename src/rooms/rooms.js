@@ -1,14 +1,20 @@
-angular.module('sp.performer.rooms', [
-  'ui.router',
-  'sp.performer.common.config',
 
+import template from './rooms.tpl.html';
+import uirouter from 'angular-ui-router';
+import performerConfig from '../common/config.js';
+import spUtils from '../common/spUtils/utils.js';
+import '../header.tpl.html';
+
+angular.module('rooms', [
+  'ui.router',
+  'performerConfig',
   'spUtils'
 ])
 
 .config(function($stateProvider) {
   $stateProvider.state('user.rooms', {
     url: '/rooms', 
-    templateUrl: 'rooms/rooms.tpl.html',
+    templateUrl: template,
     controller: 'RoomsCtrl',
     resolve: {
       rooms: function(user, config, utils) {

@@ -1,4 +1,4 @@
-angular.module('sp.performer.perform.spAssetControl', [])
+angular.module('spAssetControl', [])
 
 .directive('spAssetControl', function($compile, $http, $templateCache) {
     // TODO: Move the templates to files and find out how to load them from this directive

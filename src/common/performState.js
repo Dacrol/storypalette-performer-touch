@@ -1,5 +1,9 @@
-angular.module('sp.performer.common.performState', [
-  'sp.performer.common.config'
+import performerConfig from './config.js';
+
+var _ = require('underscore');
+
+angular.module('performState', [
+  'performerConfig',
 ])
 
   // Service that encapsulates the logic of performed assets

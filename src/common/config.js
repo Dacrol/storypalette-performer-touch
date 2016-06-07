@@ -1,4 +1,4 @@
-angular.module('performerConfig', [])
+angular.module('sp.performer.common.config', [])
 
 .constant('config', {
   version: {

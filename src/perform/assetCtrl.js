@@ -1,4 +1,4 @@
-angular.module('assetCtrl', []) 
+angular.module('sp.performer.perform.assetCtrl', []) 
 // RUNTIME: Controller for individual assets in palette
 // implied scope: $scope.$index; $scope.asset
 .controller('AssetCtrl', function($scope, config, performState) {

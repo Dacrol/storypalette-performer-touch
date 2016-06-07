@@ -10,12 +10,12 @@ import spUtils from './common/spUtils/utils.js';
 import uiBootstrap from 'angular-ui-bootstrap';
 import './less/main.less';
 
-angular.module('performer', [
-  'rooms', 
-  'palettes',
-  'perform',
+angular.module('sp.performer', [
+  'sp.performer.rooms', 
+  'sp.performer.palettes',
+  'sp.performer.perform',
 
-  'performerConfig', 
+  'sp.performer.common.config', 
 
   'uiAuth', 
   'spUtils',

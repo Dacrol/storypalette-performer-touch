@@ -5,9 +5,9 @@ import performerConfig from '../common/config.js';
 import spUtils from '../common/spUtils/utils.js';
 import '../header.tpl.html';
 
-angular.module('rooms', [
+angular.module('sp.performer.rooms', [
   'ui.router',
-  'performerConfig',
+  'sp.performer.common.config',
   'spUtils'
 ])
 

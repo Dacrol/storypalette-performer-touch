@@ -9,12 +9,12 @@ import uiDialog from '../common/uiDialog/uiDialog.js'
 import uirouter from 'angular-ui-router';
 import '../header.tpl.html';
 
-angular.module('perform', [
-  'performCtrl',
-  'assetCtrl',
+angular.module('sp.performer.perform', [
+  'sp.performer.perform.performCtrl',
+  'sp.performer.perform.assetCtrl',
 
-  'performState',
-  'spAssetControl',
+  'sp.performer.common.performState',
+  'sp.performer.perform.spAssetControl',
 
   'spConnection', 
   'uiDialog',

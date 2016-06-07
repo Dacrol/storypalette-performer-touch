@@ -4,8 +4,8 @@ import uirouter from 'angular-ui-router';
 import performerCommonPalettes from '../common/palettes.js';
 import '../header.tpl.html';
 
-angular.module('palettes', [
-  'performerCommonPalettes',
+angular.module('sp.performer.palettes', [
+  'sp.performer.common.palettes',
   'ui.router'
 ])
 

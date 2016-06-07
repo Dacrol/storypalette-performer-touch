@@ -1,4 +1,4 @@
-angular.module('performCtrl', []) 
+angular.module('sp.performer.perform.performCtrl', []) 
 
 .controller('PerformCtrl', function($scope, $state, dialog, $stateParams, socket, performState) {
   $scope.palette = undefined;

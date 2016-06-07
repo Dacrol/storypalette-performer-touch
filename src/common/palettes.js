@@ -1,5 +1,5 @@
-angular.module('performerCommonPalettes', [
-  'performerConfig' 
+angular.module('sp.performer.common.palettes', [
+  'sp.performer.common.config' 
 ])
 
 .factory('palettes', function($http, config) {

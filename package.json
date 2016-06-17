@@ -3,6 +3,11 @@
   "name": "storypalette-performer-touch",
   "version": "0.6.0",
   "homepage": "http://www.storypalette.net",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "npm run build && node server",
+    "deploy": "git push heroku master"
+  },
   "dependencies": {
     "angular": "^1.5.5",
     "angular-socket-io": "^0.6.0",

@@ -1,13 +1,12 @@
-'use strict';
+var config = require('config');
+var path  = require('path');
+var express = require('express');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
 
-var config    = require('config');
-var path      = require('path');
-var express   = require('express');
-var favicon   = require('serve-favicon');
-var logger    = require('morgan');
-var app       = express();
-var server    = require('http').Server(app);
-var env       = require('./env')(config);
+var app = express();
+var server = require('http').Server(app);
+var env  = require('./env')(config);
 
 //global.io = require('socket.io')(server);
 

@@ -5,7 +5,8 @@
   "homepage": "http://www.storypalette.net",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "npm run build && node server",
+    "start": "npm run build && NODE_ENV=production node server",
+    "dev": "npm run build && NODE_ENV=development node server",
     "deploy": "git push heroku master"
   },
   "dependencies": {
@@ -14,12 +15,12 @@
     "angular-ui-bootstrap": "^0.13.4",
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.1.1",
-    "config": "^1.20.1",
     "express": "^4.13.4",
     "http": "0.0.0",
     "morgan": "^1.7.0",
     "path": "^0.12.7",
     "serve-favicon": "^2.3.0",
+    "socket.io-client": "^1.4.8",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

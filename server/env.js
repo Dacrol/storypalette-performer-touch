@@ -3,8 +3,9 @@
 module.exports = function(config) {
   
   var info = {
-    apiBase: config.api.baseUrl, 
-    environment: config.server.environment
+    apiBase: config.apiBase,
+    socketBase: config.socketBase,
+    environment: config.environment
   };
 
   return function(req, res) {

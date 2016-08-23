@@ -9,6 +9,7 @@ import uiProfile from './common/uiProfile/uiProfile.js'
 import spUtils from './common/spUtils/utils.js';
 import uiBootstrap from 'angular-ui-bootstrap';
 
+import './assets/favicon.ico';
 import 'bootstrap/less/bootstrap.less';
 import './less/main.less';
 

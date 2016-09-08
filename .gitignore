@@ -1,4 +1,12 @@
 .swp
+npm-debug.log
 .DS_Store
 /build/
 /dist/
+/node_modules/
+/public/bundle.js
+/public/*.svg
+/public/*.eot
+/public/*.woff*
+/public/*.ttf
+
